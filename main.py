@@ -1,32 +1,30 @@
 from random import randint
 from typing import List
 
-print('Hello World')
-
 
 def get_random_sequence(start: int, end: int, count: int, exclude: List[int], can_repeat: bool) -> List[int]:
-  range_span = end - start + 1
-  if not can_repeat and range_span < count:
-    print('Decrease range or increase count.\nValues provided:\nSEQ LENGTH:\t' + str(count) +
-       '\nRANGE FROM:\t' + str(start) + '\nRANGE TO:\t' + str(end) + '\nRANGE SPAN:\t' + str(range_span) +
-       '\nDECREASE SEQ LENGTH OR INCREASE RANGE SPAN BY:\t' + str(count - range_span))
+    range_span = end - start + 1
+    if not can_repeat and range_span < count:
+        print('Decrease range or increase count.\nValues provided:\nSEQ LENGTH:\t' + str(count) +
+             '\nRANGE FROM:\t' + str(start) + '\nRANGE TO:\t' + str(end) + '\nRANGE SPAN:\t' + str(range_span) +
+             '\nDECREASE SEQ LENGTH OR INCREASE RANGE SPAN BY:\t' + str(count - range_span))
 
-    return []
+        return []
 
-  seq = []
-  seq_size = 0
-  skipped_values = 0
-  while seq_size < count:
-    r_int = randint(start, end)
-    if r_int in exclude:
-      continue
-    if r_int not in seq or can_repeat:
-      seq.append(r_int)
-      seq_size = len(seq)
-    else:
-      skipped_values += 1
-      print(str(skipped_values) + ') ' + str(r_int))
-  return sorted(seq)
+    seq = []
+    seq_size = 0
+    skipped_values = 0
+    while seq_size < count:
+        r_int = randint(start, end)
+        if r_int in exclude:
+            continue
+        if r_int not in seq or can_repeat:
+            seq.append(r_int)
+            seq_size = len(seq)
+        else:
+            skipped_values += 1
+            print(str(skipped_values) + ') ' + str(r_int))
+    return sorted(seq)
 
 
 # 17, 18, 24, 29, 40
